@@ -24,6 +24,9 @@ composer.lock
 # Mac DS_Store Files
 .DS_Store
 
+# Config Db.php
+/config/db.php
+
 # phpunit itself is not needed
 phpunit.phar
 # local phpunit config
