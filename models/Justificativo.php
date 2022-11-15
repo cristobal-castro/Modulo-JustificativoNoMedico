@@ -5,16 +5,20 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "justificativo".
+ * This is the model class for table "Justificativo".
  *
- * @property int $idJustificativo
- * @property string|null $fechaFalta
- * @property string|null $motivoInasistencia
- * @property string|null $actividadJusticar
- * @property string|null $nombre_academico
- * @property string|null $asignatura
- * @property string|null $estado
- * @property string|null $fechaEnvio
+ * @property int $id
+ * @property string $Estado
+ * @property string $FechaEnvio
+ * @property string|null $FechaFaltaStart
+ * @property string|null $FechaFaltaEnd
+ * @property string|null $ActivdadJustificar
+ * @property string $Motivo
+ * @property string $rut
+ * @property string $CodigoAsignatura
+ *
+ * @property Asignatura $codigoAsignatura
+ * @property Persona $rut0
  */
 class Justificativo extends \yii\db\ActiveRecord
 {
@@ -23,7 +27,7 @@ class Justificativo extends \yii\db\ActiveRecord
      */
     public static function tableName()
     {
-        return 'justificativo';
+        return 'Justificativo';
     }
 
     /**
@@ -32,11 +36,14 @@ class Justificativo extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['fechaFalta', 'fechaEnvio'], 'safe'],
-            [['motivoInasistencia', 'actividadJusticar'], 'string', 'max' => 1000],
-            [['nombre_academico'], 'string', 'max' => 500],
-            [['asignatura'], 'string', 'max' => 256],
-            [['estado'], 'string', 'max' => 50],
+            [['Estado', 'FechaEnvio', 'Motivo', 'rut', 'CodigoAsignatura'], 'required'],
+            [['FechaEnvio', 'FechaFaltaStart', 'FechaFaltaEnd'], 'safe'],
+            [['Estado', 'rut'], 'string', 'max' => 50],
+            [['ActivdadJustificar'], 'string', 'max' => 256],
+            [['Motivo'], 'string', 'max' => 1000],
+            [['CodigoAsignatura'], 'string', 'max' => 100],
+            [['rut'], 'exist', 'skipOnError' => true, 'targetClass' => Persona::class, 'targetAttribute' => ['rut' => 'rut']],
+            [['CodigoAsignatura'], 'exist', 'skipOnError' => true, 'targetClass' => Asignatura::class, 'targetAttribute' => ['CodigoAsignatura' => 'Codigo']],
         ];
     }
 
@@ -46,14 +53,35 @@ class Justificativo extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'idJustificativo' => 'Id Justificativo',
-            'fechaFalta' => 'Fecha Falta',
-            'motivoInasistencia' => 'Motivo Inasistencia',
-            'actividadJusticar' => 'Actividad Justicar',
-            'nombre_academico' => 'Nombre Academico',
-            'asignatura' => 'Asignatura',
-            'estado' => 'Estado',
-            'fechaEnvio' => 'Fecha Envio',
+            'id' => 'ID',
+            'Estado' => 'Estado',
+            'FechaEnvio' => 'Fecha Envio',
+            'FechaFaltaStart' => 'Fecha Falta Start',
+            'FechaFaltaEnd' => 'Fecha Falta End',
+            'ActivdadJustificar' => 'Activdad Justificar',
+            'Motivo' => 'Motivo',
+            'rut' => 'Rut',
+            'CodigoAsignatura' => 'Codigo Asignatura',
         ];
+    }
+
+    /**
+     * Gets query for [[CodigoAsignatura]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCodigoAsignatura()
+    {
+        return $this->hasOne(Asignatura::class, ['Codigo' => 'CodigoAsignatura']);
+    }
+
+    /**
+     * Gets query for [[Rut0]].
+     *
+     * @return \yii\db\ActiveQuery
+     */
+    public function getRut0()
+    {
+        return $this->hasOne(Persona::class, ['rut' => 'rut']);
     }
 }

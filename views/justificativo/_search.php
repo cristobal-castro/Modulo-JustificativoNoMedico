@@ -15,21 +15,21 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'idJustificativo') ?>
+    <?= $form->field($model, 'id') ?>
 
-    <?= $form->field($model, 'fechaFalta') ?>
+    <?= $form->field($model, 'Estado') ?>
 
-    <?= $form->field($model, 'motivoInasistencia') ?>
+    <?= $form->field($model, 'FechaEnvio') ?>
 
-    <?= $form->field($model, 'actividadJusticar') ?>
+    <?= $form->field($model, 'FechaFaltaStart') ?>
 
-    <?= $form->field($model, 'nombre_academico') ?>
+    <?= $form->field($model, 'FechaFaltaEnd') ?>
 
-    <?php // echo $form->field($model, 'asignatura') ?>
+    <?php // echo $form->field($model, 'ActivdadJustificar') ?>
 
-    <?php // echo $form->field($model, 'estado') ?>
+    <?php // echo $form->field($model, 'Motivo') ?>
 
-    <?php // echo $form->field($model, 'fechaEnvio') ?>
+    <?php // echo $form->field($model, 'rut') ?>
 
     <div class="form-group">
         <?= Html::submitButton('Search', ['class' => 'btn btn-primary']) ?>

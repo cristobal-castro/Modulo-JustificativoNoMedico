@@ -17,8 +17,8 @@ class JustificativoSearch extends Justificativo
     public function rules()
     {
         return [
-            [['idJustificativo'], 'integer'],
-            [['fechaFalta', 'motivoInasistencia', 'actividadJusticar', 'nombre_academico', 'asignatura', 'estado', 'fechaEnvio'], 'safe'],
+            [['id'], 'integer'],
+            [['Estado', 'FechaEnvio', 'FechaFaltaStart', 'FechaFaltaEnd', 'ActivdadJustificar', 'Motivo', 'rut'], 'safe'],
         ];
     }
 
@@ -58,16 +58,16 @@ class JustificativoSearch extends Justificativo
 
         // grid filtering conditions
         $query->andFilterWhere([
-            'idJustificativo' => $this->idJustificativo,
-            'fechaFalta' => $this->fechaFalta,
-            'fechaEnvio' => $this->fechaEnvio,
+            'id' => $this->id,
+            'FechaEnvio' => $this->FechaEnvio,
+            'FechaFaltaStart' => $this->FechaFaltaStart,
+            'FechaFaltaEnd' => $this->FechaFaltaEnd,
         ]);
 
-        $query->andFilterWhere(['like', 'motivoInasistencia', $this->motivoInasistencia])
-            ->andFilterWhere(['like', 'actividadJusticar', $this->actividadJusticar])
-            ->andFilterWhere(['like', 'nombre_academico', $this->nombre_academico])
-            ->andFilterWhere(['like', 'asignatura', $this->asignatura])
-            ->andFilterWhere(['like', 'estado', $this->estado]);
+        $query->andFilterWhere(['like', 'Estado', $this->Estado])
+            ->andFilterWhere(['like', 'ActivdadJustificar', $this->ActivdadJustificar])
+            ->andFilterWhere(['like', 'Motivo', $this->Motivo])
+            ->andFilterWhere(['like', 'rut', $this->rut]);
 
         return $dataProvider;
     }

@@ -35,7 +35,7 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
                       <p>
                       <h3>Hola Pablo</h3>
                       </p>
-                      <p>Super Usuario | <a href="">Perfil</a> | <a href="#">Salir</a> </p>
+                      <p>Super Usuario | <a href="">Perfil</a> | <a href='/logout'  data-method="post">Salir</a> </p>
                    </div>
                 </div>
             </header>

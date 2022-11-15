@@ -15,6 +15,7 @@ class SiteController extends Controller
     /**
      * {@inheritdoc}
      */
+
     public function behaviors()
     {
         return [
@@ -103,8 +104,7 @@ class SiteController extends Controller
     public function actionLogout()
     {
         Yii::$app->user->logout();
-
-        return $this->goHome();
+        return $this->redirect(['/']); ;
     }
 
     /**
@@ -133,6 +133,10 @@ class SiteController extends Controller
     public function actionAbout()
     {
         return $this->render('about');
+    }
+
+    public function actionSingup(){
+        
     }
 
 }

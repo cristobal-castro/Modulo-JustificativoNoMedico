@@ -20,8 +20,8 @@ $config = [
             'class' => 'yii\caching\FileCache',
         ],
         'user' => [
-            'identityClass' => 'app\models\User',
-            'enableAutoLogin' => true,
+            'identityClass' => 'app\models\Persona',
+            'enableAutoLogin' => false,
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
@@ -48,7 +48,8 @@ $config = [
             'rules' => [
                 '/home'=>'/site/index',
                 '/justificativo'=>'/site/justificativos',
-                '/formulario'=>'/justificativo/create'
+                '/formulario'=>'/justificativo/create',
+                '/logout'=>'/site/logout'
             ],
         ],
 

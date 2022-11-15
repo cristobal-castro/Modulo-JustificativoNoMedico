@@ -13,6 +13,7 @@ use yii\grid\GridView;
 $this->title = 'Justificativos';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
+<div class="justificativo-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -26,20 +27,20 @@ $this->params['breadcrumbs'][] = $this->title;
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
         'columns' => [
-            //['class' => 'yii\grid\SerialColumn'],
+            ['class' => 'yii\grid\SerialColumn'],
 
-            //'idJustificativo',
-            'fechaEnvio',
-            'fechaFalta',
-            'actividadJusticar',
-            'asignatura',
-            'nombre_academico',
-            'motivoInasistencia',
-            'estado',
+            'id',
+            'Estado',
+            'FechaEnvio',
+            'FechaFaltaStart',
+            'FechaFaltaEnd',
+            //'ActivdadJustificar',
+            //'Motivo',
+            //'rut',
             [
                 'class' => ActionColumn::className(),
                 'urlCreator' => function ($action, Justificativo $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'idJustificativo' => $model->idJustificativo]);
+                    return Url::toRoute([$action, 'id' => $model->id]);
                  }
             ],
         ],
@@ -47,3 +48,4 @@ $this->params['breadcrumbs'][] = $this->title;
     ]); ?>
 
 
+</div>

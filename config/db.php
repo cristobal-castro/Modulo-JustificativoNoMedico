@@ -2,7 +2,7 @@
 
 return [
     'class' => 'yii\db\Connection',
-    'dsn' => 'sqlsrv:Server=DESKTOP-KT6R4CJ;Database=formulario',
+    'dsn' => 'sqlsrv:Server=DESKTOP-78Q73UL;Database=mformulario',
     'username' => 'usuario',
     'password' => '12345678',
     'charset' => 'utf8',

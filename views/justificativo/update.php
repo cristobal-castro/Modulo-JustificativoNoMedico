@@ -5,9 +5,9 @@ use yii\helpers\Html;
 /** @var yii\web\View $this */
 /** @var app\models\Justificativo $model */
 
-$this->title = 'Update Justificativo: ' . $model->idJustificativo;
+$this->title = 'Update Justificativo: ' . $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Justificativos', 'url' => ['index']];
-$this->params['breadcrumbs'][] = ['label' => $model->idJustificativo, 'url' => ['view', 'idJustificativo' => $model->idJustificativo]];
+$this->params['breadcrumbs'][] = ['label' => $model->id, 'url' => ['view', 'id' => $model->id]];
 $this->params['breadcrumbs'][] = 'Update';
 ?>
 <div class="justificativo-update">

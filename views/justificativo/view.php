@@ -6,7 +6,7 @@ use yii\widgets\DetailView;
 /** @var yii\web\View $this */
 /** @var app\models\Justificativo $model */
 
-$this->title = $model->idJustificativo;
+$this->title = $model->id;
 $this->params['breadcrumbs'][] = ['label' => 'Justificativos', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 \yii\web\YiiAsset::register($this);
@@ -16,8 +16,8 @@ $this->params['breadcrumbs'][] = $this->title;
     <h1><?= Html::encode($this->title) ?></h1>
 
     <p>
-        <?= Html::a('Update', ['update', 'idJustificativo' => $model->idJustificativo], ['class' => 'btn btn-primary']) ?>
-        <?= Html::a('Delete', ['delete', 'idJustificativo' => $model->idJustificativo], [
+        <?= Html::a('Update', ['update', 'id' => $model->id], ['class' => 'btn btn-primary']) ?>
+        <?= Html::a('Delete', ['delete', 'id' => $model->id], [
             'class' => 'btn btn-danger',
             'data' => [
                 'confirm' => 'Are you sure you want to delete this item?',
@@ -29,14 +29,13 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'idJustificativo',
-            'fechaFalta',
-            'motivoInasistencia',
-            'actividadJusticar',
-            'nombre_academico',
-            'asignatura',
-            'estado',
-            'fechaEnvio',
+            'id',
+            'Estado',
+            'FechaEnvio',
+            'FechaFaltaStart',
+            'FechaFaltaEnd',
+            'ActivdadJustificar',
+            'Motivo'
         ],
     ]) ?>
 
