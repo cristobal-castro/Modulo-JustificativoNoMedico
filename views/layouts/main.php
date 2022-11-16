@@ -33,18 +33,18 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
                    <a href="#" style="float:left; font-size:56px; top: -7px;" class="icon fa-user-circle"><span class="label">Instagram</span></a>
                    <div style="padding-left: 4.5em; padding-top: 0.6em;">
                       <p>
-                      <h3>Hola Pablo</h3>
+                      <?= Html::tag('h3', Html::encode('Hola Usuario')) ?>
                       </p>
-                      <p>Super Usuario | <a href="">Perfil</a> | <a href='/logout'  data-method="post">Salir</a> </p>
+                      <p>Admin | <a href="">Perfil</a> | <a href='/logout'  data-method="post">Salir</a> </p>
                    </div>
                 </div>
             </header>
-            <crumb class="rastro"><a href="#" class="icon fa-home"></a> <a href="#" class="icon fa-chevron-left"></a> 
-               <?= Breadcrumbs::widget([
-                  'links'=>isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : []
+            <crumb class="rastro"><?= Breadcrumbs::widget([
+                  'links'=>isset($this->params['breadcrumbs']) ? $this->params['breadcrumbs'] : [],
                ])
                ?>
-            </crumb>
+            <!-- <a href="#" class="icon fa-home"></a> <a href="#" class="icon fa-chevron-left"></a>--> </crumb> 
+            
             <div class="inner">
                 <header class="main">
                     <h1>Elementos para dar formato a cada página</h1>

@@ -25,6 +25,7 @@ class Justificativo extends \yii\db\ActiveRecord
     /**
      * {@inheritdoc}
      */
+    public $file;
     public static function tableName()
     {
         return 'Justificativo';
@@ -38,6 +39,7 @@ class Justificativo extends \yii\db\ActiveRecord
         return [
             [['Estado', 'FechaEnvio', 'Motivo', 'rut', 'CodigoAsignatura'], 'required'],
             [['FechaEnvio', 'FechaFaltaStart', 'FechaFaltaEnd'], 'safe'],
+            [['file'],'file'],
             [['Estado', 'rut'], 'string', 'max' => 50],
             [['ActivdadJustificar'], 'string', 'max' => 256],
             [['Motivo'], 'string', 'max' => 1000],

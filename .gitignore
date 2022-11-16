@@ -25,7 +25,7 @@ composer.lock
 .DS_Store
 
 # Config Db.php
-/config/db.php
+/config
 
 # phpunit itself is not needed
 phpunit.phar

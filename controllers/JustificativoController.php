@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Persona;
 use Yii;
+use yii\web\UploadedFile;
 
 /**
  * JustificativoController implements the CRUD actions for Justificativo model.
@@ -75,8 +76,14 @@ class JustificativoController extends Controller
 
         if ($this->request->isPost) {
             if ($model->load($this->request->post())) {
-                $model->Estado='Pendiente';
+
+                //Subir archivos
                 $model->FechaEnvio=date('d-m-Y');
+                $imgName = $model -> FechaEnvio;
+                $model->file= UploadedFile::getInstance($model,'file');
+                $model->file->saveAs('uploads/'.$imgName.'.'.$model->file->extension);
+
+                $model->Estado='Pendiente';
                 $model->rut=Yii::$app->user->identity->rut;
                 $model->save();
                 return $this->redirect(['view', 'id' => $model->id]);

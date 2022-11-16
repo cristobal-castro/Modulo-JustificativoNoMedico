@@ -12,7 +12,7 @@ use yii\helpers\ArrayHelper;
 
 <div class="justificativo-form">
 
-    <?php $form = ActiveForm::begin(); ?>
+    <?php $form = ActiveForm::begin(['options'=>['enctype'=>'multipart/form-data']]); ?>
 
         <div class="row gtr-uniform">
             <div class="col-6 col-12-xsmall">
@@ -45,6 +45,10 @@ use yii\helpers\ArrayHelper;
             <!-- Break -->
             <div class="col-4 col-12-xsmall">
                 <?= $form->field($model, 'FechaFaltaEnd')->textInput(['type'=>'date','value'=>'2022-11-10','Style'=>'font-size: 13pt;font-weight: 500;line-height: 1.85'])->label('')?>
+            </div> 
+             <!-- Break -->
+             <div class="col-12">
+                <?= $form->field($model, 'file')->fileInput()->label('Subir un archivo')?>
             </div> 
             <!-- Break -->
             <div class="col-12">
