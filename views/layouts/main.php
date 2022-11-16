@@ -30,13 +30,15 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
                 <a href="home" class="logo"><img src="images/logo_ici.png" alt="Volver a ICI"></a>
                 <div class="logo2">Ingeniería Civil en Informática</div>
                 <div class="icons">
-                   <a href="#" style="float:left; font-size:56px; top: -7px;" class="icon fa-user-circle"><span class="label">Instagram</span></a>
-                   <div style="padding-left: 4.5em; padding-top: 0.6em;">
-                      <p>
-                      <?= Html::tag('h3', Html::encode('Hola Usuario')) ?>
-                      </p>
-                      <p>Admin | <a href="">Perfil</a> | <a href='/logout'  data-method="post">Salir</a> </p>
-                   </div>
+                  <?php if(Yii::$app->user->isGuest){
+                        echo Html::tag('a', Html::tag('a','Entrar',['href'=>'/site/login']));?>
+                  <?php }else{?>
+                     <a href="#" style="float:left; font-size:56px; top: -7px;" class="icon fa-user-circle"><span class="label">Instagram</span></a>
+                     <div style="padding-left: 4.5em; padding-top: 0.6em;">
+                           <?php echo Html::tag('h3', 'Hola '.Yii::$app->user->identity->Nombre.'');?> 
+                           <p><?php echo Yii::$app->user->identity->Cargo; ?> | <a href="">Perfil</a> | <a href='/logout'  data-method="post">Salir</a> </p>
+                     </div>
+                  <?php }; ?>
                 </div>
             </header>
             <crumb class="rastro"><?= Breadcrumbs::widget([
@@ -62,6 +64,7 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
                   <header class="major">
                      <h2>Sistema de Gestión de Carrera</h2>
                   </header>
+                  <?php if(!Yii::$app->user->isGuest){?>
                   <ul>
                      <li><a href="#">Inicio</a></li>
                      <li>
@@ -126,6 +129,7 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
                      </li>
                      <li><a href="#">Documentos</a></li>
                   </ul>
+                  <?php }; ?>
                </nav>
                <!-- Seccion -->
                <!-- Seccion -->

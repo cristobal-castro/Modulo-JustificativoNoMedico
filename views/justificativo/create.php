@@ -11,7 +11,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="justificativo-create">
 
-    <h2><?= Html::encode('Solicitar Justificativo') ?></h1>
+    <h2><?= Html::encode('Solicitar Justificativo') ?></h2>
 
     <?= $this->render('_form', [
         'model' => $model,
