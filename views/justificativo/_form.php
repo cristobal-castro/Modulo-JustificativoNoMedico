@@ -8,6 +8,7 @@ use yii\jui\DatePicker;
 /** @var app\models\Justificativo $model */
 /** @var yii\widgets\ActiveForm $form */
 use yii\helpers\ArrayHelper;
+use yii\web\View;
 
 $fechaActual=date('Y-m-d');
 ?>
@@ -32,7 +33,13 @@ $fechaActual=date('Y-m-d');
             <div class="col-6 col-12-xsmall">
                 <?= $form->field($model, 'CodigoAsignatura')->dropdownList(
                         ArrayHelper::map($asignaturas, 'Codigo', 'Nombre')
-                        ,['prompt'=>'- Asignatura -','class'=>'input']
+                        ,['prompt'=>'- Asignatura -','class'=>'input','id'=>'asignatura']
+                )->label('');?>
+            </div>
+            <div class="col-6 col-12-xsmall">
+                <?= $form->field($model, 'CodigoAsignatura')->dropdownList(
+                        ArrayHelper::map($asignaturas, 'Codigo', 'Nombre')
+                        ,['prompt'=>'- Asignatura -','class'=>'input','id'=>'docente']
                 )->label('');?>
             </div>
             <div class="col-12">
@@ -66,5 +73,6 @@ $fechaActual=date('Y-m-d');
         </div>
 
     <?php ActiveForm::end(); ?>
+
 
 </div>

@@ -11,6 +11,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\Persona;
 use Yii;
+use yii\data\ActiveDataProvider;
 use yii\web\UploadedFile;
 
 /**
@@ -81,12 +82,15 @@ class JustificativoController extends Controller
                 $model->FechaEnvio=date('d-m-Y');
                 $imgName = $model -> FechaEnvio;
                 $model->file= UploadedFile::getInstance($model,'file');
-                $model->file->saveAs('uploads/'.$imgName.'.'.$model->file->extension);
+                if($model->file= UploadedFile::getInstance($model,'file')){
+                    $model->file->saveAs('uploads/'.$imgName.'.'.$model->file->extension);
+                }
+                
 
                 $model->Estado='Pendiente';
                 $model->rut=Yii::$app->user->identity->rut;
                 $model->save();
-                return $this->redirect(['view', 'id' => $model->id]);
+                return $this->redirect(['/justificativo']);
             }
         } else {
             $model->loadDefaultValues();
@@ -99,6 +103,23 @@ class JustificativoController extends Controller
             'asignaturas'=>$asignaturas
         ]);
     }
+
+    public function actionJustificativos(){
+
+        $searchModel = new JustificativoSearch();
+        $dataProvider = new ActiveDataProvider([
+            'query'=> Justificativo::find()->where(['rut'=>Yii::$app->user->identity->rut]),
+        ]);
+        
+
+        return $this->render('misjustificativos', [
+            'searchModel' => $searchModel,
+            'dataProvider' => $dataProvider,
+        ]);
+
+       
+    }
+
 
     /**
      * Updates an existing Justificativo model.

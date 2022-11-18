@@ -47,7 +47,7 @@ $config = [
             'showScriptName' => false,
             'rules' => [
                 '/home'=>'/site/index',
-                '/justificativo'=>'/site/justificativos',
+                '/justificativo'=>'/justificativo/justificativos',
                 '/formulario'=>'/justificativo/create',
                 '/logout'=>'/site/logout'
             ],

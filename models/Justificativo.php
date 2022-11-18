@@ -3,7 +3,8 @@
 namespace app\models;
 
 use Yii;
-
+use yii\data\ActiveDataProvider;
+use yii\db\Query;
 /**
  * This is the model class for table "Justificativo".
  *
@@ -86,4 +87,6 @@ class Justificativo extends \yii\db\ActiveRecord
     {
         return $this->hasOne(Persona::class, ['rut' => 'rut']);
     }
+
+   
 }
