@@ -74,5 +74,4 @@ $fechaActual=date('Y-m-d');
 
     <?php ActiveForm::end(); ?>
 
-
 </div>
