@@ -8,6 +8,8 @@ use yii\jui\DatePicker;
 /** @var app\models\Justificativo $model */
 /** @var yii\widgets\ActiveForm $form */
 use yii\helpers\ArrayHelper;
+
+$fechaActual=date('Y-m-d');
 ?>
 
 <div class="justificativo-form">
@@ -16,38 +18,36 @@ use yii\helpers\ArrayHelper;
 
         <div class="row gtr-uniform">
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="name" id="name" value="" placeholder="Francisco" enabled />
+                <input type="text" name="name" id="name" value=<?php echo Yii::$app->user->identity->Nombre ?> placeholder="" disabled />
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="apellidos" id="apellidos" value="" placeholder="Lizana" />
+                <input type="text" name="apellidos" id="apellidos" value=<?php echo Yii::$app->user->identity->Apellido ?> placeholder="Lizana" disabled/>
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="rut" id="rut" value="" placeholder="20.363.288-6" />
+                <input type="text" name="rut" id="rut" value=<?php echo Yii::$app->user->identity->rut ?> placeholder="" disabled/>
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="email" name="demo-email" id="demo-email" value="" placeholder="francisco@gmail.com" />
+                <input type="email" name="demo-email" id="demo-email" value=<?php echo Yii::$app->user->identity->Email ?> placeholder="francisco@gmail.com" disabled/>
             </div>
             <div class="col-6 col-12-xsmall">
                 <?= $form->field($model, 'CodigoAsignatura')->dropdownList(
                         ArrayHelper::map($asignaturas, 'Codigo', 'Nombre')
-                    ,
-                    ['prompt'=>'- Asignatura -','class'=>'input']
+                        ,['prompt'=>'- Asignatura -','class'=>'input']
                 )->label('');?>
             </div>
-            
             <div class="col-12">
-            <?= $form->field($model, 'ActivdadJustificar')->textInput(['maxlength' => true,'class'=>'input','placeholder'=>'Actividad a justificar Ej: Certamen, Laboratorio, Clases, etc'])->label('');?>
+                <?= $form->field($model, 'ActivdadJustificar')->textInput(['maxlength' => true,'class'=>'input','placeholder'=>'Actividad a justificar Ej: Certamen, Laboratorio, Clases, etc'])->label('');?>
             </div>
             <!-- Break -->
             <div class="col-4 col-12-xsmall">
-                <?= $form->field($model, 'FechaFaltaStart')->textInput(['type'=>'date','value'=>'2022-11-10','Style'=>'font-size: 13pt;font-weight: 500;line-height: 1.85'])->label('')?>
+                <?= $form->field($model, 'FechaFaltaStart')->textInput(['type'=>'date','value'=>$fechaActual,'Style'=>'font-size: 13pt;font-weight: 500;line-height: 1.85'])->label('')?>
             </div> 
             <!-- Break -->
             <div class="col-4 col-12-xsmall">
-                <?= $form->field($model, 'FechaFaltaEnd')->textInput(['type'=>'date','value'=>'2022-11-10','Style'=>'font-size: 13pt;font-weight: 500;line-height: 1.85'])->label('')?>
+                <?= $form->field($model, 'FechaFaltaEnd')->textInput(['type'=>'date','value'=>$fechaActual,'Style'=>'font-size: 13pt;font-weight: 500;line-height: 1.85'])->label('')?>
             </div> 
              <!-- Break -->
-             <div class="col-12">
+             <div class="col-5">
                 <?= $form->field($model, 'file')->fileInput()->label('Subir un archivo')?>
             </div> 
             <!-- Break -->

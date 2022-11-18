@@ -49,7 +49,7 @@ $this->registerMetaTag(['name' => 'keywords', 'content' => $this->params['meta_k
             
             <div class="inner">
                 <header class="main">
-                    <h1>Elementos para dar formato a cada página</h1>
+                  <h1><?= Html::encode($this->title) ?></h1>
                 </header>
                 <section>
                     <?php echo $content ?>
