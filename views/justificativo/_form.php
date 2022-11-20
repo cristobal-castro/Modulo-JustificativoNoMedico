@@ -19,16 +19,16 @@ $fechaActual=date('Y-m-d');
 
         <div class="row gtr-uniform">
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="name" id="name" value=<?php echo Yii::$app->user->identity->Nombre ?> placeholder="" disabled />
+                <input type="text" name="name" id="name" value=<?php echo Yii::$app->user->identity->Nombre ?> placeholder="Nombre" disabled style="background-color:gainsboro" />
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="apellidos" id="apellidos" value=<?php echo Yii::$app->user->identity->Apellido ?> placeholder="Lizana" disabled/>
+                <input type="text" name="apellidos" id="apellidos" value=<?php echo Yii::$app->user->identity->Apellido ?> placeholder="Apellido" disabled style="background-color:gainsboro" />
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="text" name="rut" id="rut" value=<?php echo Yii::$app->user->identity->rut ?> placeholder="" disabled/>
+                <input type="text" name="rut" id="rut" value=<?php echo Yii::$app->user->identity->rut ?> placeholder="Rut" disabled style="background-color:gainsboro" />
             </div>
             <div class="col-6 col-12-xsmall">
-                <input type="email" name="demo-email" id="demo-email" value=<?php echo Yii::$app->user->identity->Email ?> placeholder="francisco@gmail.com" disabled/>
+                <input type="email" name="demo-email" id="demo-email" value=<?php echo Yii::$app->user->identity->Email ?> placeholder="Correo Electrónico" disabled style="background-color:gainsboro" />
             </div>
             <div class="col-6 col-12-xsmall">
                 <?= $form->field($model, 'CodigoAsignatura')->dropdownList(

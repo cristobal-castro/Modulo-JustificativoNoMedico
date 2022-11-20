@@ -109,6 +109,18 @@ class JustificativoController extends Controller
         $searchModel = new JustificativoSearch();
         $dataProvider = new ActiveDataProvider([
             'query'=> Justificativo::find()->where(['rut'=>Yii::$app->user->identity->rut]),
+            'pagination' => [
+                'pageSize' => 10,
+            ],
+            'sort' => [
+                'attributes' => [
+                    'FechaEnvio',
+                    'FechaFaltaStart',
+                    'FechaFaltaEnd',
+                    'ActivdadJustificar',
+                    'Estado'
+                ],
+            ],
         ]);
         
 

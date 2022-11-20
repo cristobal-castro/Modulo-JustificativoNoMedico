@@ -23,22 +23,30 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             [
                'attribute' => 'FechaFaltaStart',
+               'label'=> 'Inicio falta',
                'format' =>  ['date', 'php:d-m-Y'],
             ],
             [
                'attribute' => 'FechaFaltaEnd',
+               'label'=> 'Termino falta',
                'format' =>  ['date', 'php:d-m-Y'],
             ],
-            'ActivdadJustificar',
+            [
+               'attribute' => 'ActivdadJustificar',
+               'label'=> 'Actividad a Justificar',
+            ],
             'Estado',
             [
-               
-               'class' => ActionColumn::className(),
-               'urlCreator' => function ($action, Justificativo $model, $key, $index, $column) {
-                    return Url::toRoute([$action, 'id' => $model->id]);
-               },
-            ],
+               'header'=> 'Acciones',
+               'class' => 'yii\grid\ActionColumn',
+               'template' => '{view} {link}',
+               'buttons' => [
+                   'link' => function ($url,$model,$key) {
+                       return Html::a('Meta', $url);
+                   },
+              ],
+           ],
         ],
-        'tableOptions' =>['class' => 'alt'],
+        'tableOptions' =>['class' => 'table.alt','Style' => 'font-size:medium;'],
     ]); ?>             
 </body>
