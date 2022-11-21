@@ -36,12 +36,6 @@ $fechaActual=date('Y-m-d');
                         ,['prompt'=>'- Asignatura -','class'=>'input','id'=>'asignatura']
                 )->label('');?>
             </div>
-            <div class="col-6 col-12-xsmall">
-                <?= $form->field($model, 'CodigoAsignatura')->dropdownList(
-                        ArrayHelper::map($asignaturas, 'Codigo', 'Nombre')
-                        ,['prompt'=>'- Asignatura -','class'=>'input','id'=>'docente']
-                )->label('');?>
-            </div>
             <div class="col-12">
                 <?= $form->field($model, 'ActivdadJustificar')->textInput(['maxlength' => true,'class'=>'input','placeholder'=>'Actividad a justificar Ej: Certamen, Laboratorio, Clases, etc'])->label('');?>
             </div>

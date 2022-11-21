@@ -4,7 +4,10 @@ use yii\helpers\Html;
 use yii\helpers\Url;
 use yii\grid\ActionColumn;
 use yii\grid\GridView;
+
 /** @var yii\web\View $this */
+/** @var app\models\JustificativoSearch $searchModel */
+/** @var yii\data\ActiveDataProvider $dataProvider */
 
 $this->title = 'Mis Justificativos';
 $this->params['breadcrumbs'][] = $this->title;
@@ -14,12 +17,15 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
         'filterModel' => $searchModel,
+        'showOnEmpty'=>true,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             [
                'attribute' => 'FechaEnvio',
+               'label'=> 'Fecha de envío',
                'format' =>  ['date', 'php:d-m-Y'],
+               
             ],
             [
                'attribute' => 'FechaFaltaStart',

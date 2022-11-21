@@ -40,7 +40,7 @@ class JustificativoSearch extends Justificativo
      */
     public function search($params)
     {
-        $query = Justificativo::find();
+        $query = Justificativo::find()->where(['rut'=> Yii::$app->user->identity->rut]);
 
         // add conditions that should always apply here
 
@@ -59,17 +59,21 @@ class JustificativoSearch extends Justificativo
         // grid filtering conditions
         $query->andFilterWhere([
             'id' => $this->id,
-            'FechaEnvio' => $this->FechaEnvio,
-            'FechaFaltaStart' => $this->FechaFaltaStart,
-            'FechaFaltaEnd' => $this->FechaFaltaEnd,
+            //'FechaEnvio' => $this->FechaEnvio,
+            //'FechaFaltaStart' => $this->FechaFaltaStart,
+            //'FechaFaltaEnd' => $this->FechaFaltaEnd,
         ]);
+
 
         $query->andFilterWhere(['like', 'Estado', $this->Estado])
             ->andFilterWhere(['like', 'ActivdadJustificar', $this->ActivdadJustificar])
-            ->andFilterWhere(['like', 'Motivo', $this->Motivo])
-            ->andFilterWhere(['like', 'rut', $this->rut]);
+            ->andFilterWhere(['like', 'FechaFaltaStart',$this->FechaFaltaStart])
+            ->andFilterWhere(['like', 'FechaFaltaEnd', $this->FechaFaltaEnd])
+            ->andFilterWhere(['like', 'FechaEnvio', $this->FechaEnvio]);
 
         return $dataProvider;
     }
+
+    
    
 }
